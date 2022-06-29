@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-
+import './Note.css';
 function Note(props) {
 
 const [showDesc, setShowDesc] = useState(false);

@@ -1,6 +1,6 @@
 import React from 'react';
-import './Notes.css';
 import Note from './Note/Note';
+import './Notes.css';
 import NewNote from './NewNote/NewNote';
 import Modal from 'react-modal';
 import EditNote from './EditNote/EditNote';
@@ -82,7 +82,7 @@ class Notes extends React.Component {
     return (
       <div>
         <NotificationContainer />
-        <p>Moje notatki: </p>
+        <p>Notatki: </p>
 
         <NewNote
           onAdd = {(note) => this.addNote(note)} />
@@ -97,16 +97,18 @@ class Notes extends React.Component {
               onEdit={note => this.editNote(note)}/>
               <button onClick={() => this.toggleModal()}>Anuluj</button>
           </Modal>
-
-        {this.state.notes.map(note => (
-           <Note 
-              key = {note._id}
-              _id = {note._id}
-              title = {note.title}
-              body = {note.body}
-              onEdit = {(note) => this.editNoteHandler(note)}
-              onDelete = {(_id) => this.deleteNote(_id)} /> 
-        ))}
+        
+        <div className='container'>
+          {this.state.notes.map(note => (
+            <Note 
+                key = {note._id}
+                _id = {note._id}
+                title = {note.title}
+                body = {note.body}
+                onEdit = {(note) => this.editNoteHandler(note)}
+                onDelete = {(_id) => this.deleteNote(_id)} /> 
+          ))}
+        </div>
 
       </div>
     );
